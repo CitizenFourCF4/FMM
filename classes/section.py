@@ -30,11 +30,16 @@ class Section():
     def union(self, second_section):
         #TODO Добавить валидацию
         pass
-    
 
     def difference(self, second_section):
-        #TODO Добавить валидацию
-        pass
+        for key in second_section:
+            for node in second_section[key]['R+']:
+                if node in self.section[key]['R+']:
+                    self.section[key]['R+'].remove(node)
+            for node in second_section[key]['R-']:
+                if node in self.section[key]['R-']:
+                    self.section[key]['R-'].remove(node)
+        return self.section
     
 
     def symmetric_difference(self, second_section):
