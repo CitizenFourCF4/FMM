@@ -17,7 +17,7 @@ class DiGraph():
 
 
     def inverse(self):
-        pass
+        return nx.reverse(self.digraph)
     
 
     def narrowing(self, set):
