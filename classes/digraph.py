@@ -8,7 +8,12 @@ class DiGraph():
 
 
     def complement(self):
-        pass
+        nodes, edges = self.digraph.nodes(), set(self.digraph.edges())
+        all_edges = {(i, j) for j in nodes for i in nodes}
+        new_edges = all_edges - edges
+        self.digraph.remove_edges_from(edges)
+        self.digraph.add_edges_from(new_edges)
+        return self.digraph
 
 
     def inverse(self):
@@ -43,3 +48,4 @@ class DiGraph():
     def multiple(self, second_digraph):
         #TODO Добавить валидацию
         pass
+
