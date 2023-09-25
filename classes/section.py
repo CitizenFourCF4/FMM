@@ -63,7 +63,16 @@ class Section():
 
     def symmetric_difference(self, second_section):
         #TODO Добавить валидацию
-        pass
+        for node in list(second_section.keys()):
+            # Для R+
+            for elem_r_plus in second_section[node]['R+']:
+                if elem_r_plus not in self.section[node]['R+']:
+                    self.section[node]['R+'].append(elem_r_plus)
+            # Для R-
+            for elem_r_minus in second_section[node]['R-']:
+                if elem_r_minus not in self.section[node]['R-']:
+                    self.section[node]['R-'].append(elem_r_minus)
+        return self.section
     
 
     def multiple(self, second_section):
