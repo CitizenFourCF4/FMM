@@ -50,5 +50,11 @@ class DiGraph():
 
     def multiple(self, second_digraph):
         #TODO Добавить валидацию
-        pass
+        res_graph, res_graph_edges = nx.DiGraph(), []
+        for edge_of_G1 in list(self.digraph.edges()):
+            for  edge_of_G2 in list(second_digraph.edges()):
+                if edge_of_G1[-1] == edge_of_G2[0]:
+                    res_graph_edges.append((edge_of_G1[0], edge_of_G2[-1]))
+        res_graph.add_edges_from(res_graph_edges)
+        return res_graph
 
