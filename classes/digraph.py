@@ -22,7 +22,7 @@ class DiGraph():
 
     def narrowing(self, set):
         #TODO Добавить валидацию
-        pass
+        return self.digraph.subgraph(set).copy()
     
 
     def intersection(self, second_digraph):
@@ -37,7 +37,10 @@ class DiGraph():
 
     def difference(self, second_digraph):
         #TODO Добавить валидацию
-        pass
+        new_digraph = nx.DiGraph()
+        new_digraph.add_nodes_from(self.digraph.nodes)
+        new_digraph.add_edges_from(set(self.digraph.edges).difference(set(second_digraph.edges)))
+        return new_digraph
 
 
     def symmetric_difference(self, second_digraph):
