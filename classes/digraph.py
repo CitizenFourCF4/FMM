@@ -22,7 +22,7 @@ class DiGraph():
 
     def narrowing(self, set):
         #TODO Добавить валидацию
-        pass
+        return self.digraph.subgraph(set).copy()
     
 
     def intersection(self, second_digraph):
