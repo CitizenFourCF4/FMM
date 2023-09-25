@@ -20,11 +20,19 @@ class Section():
         for edge_env in self.section.values():
             edge_env['R+'], edge_env['R-'] = edge_env['R-'], edge_env['R+']
         return self.section
-    
 
     def narrowing(self, set):
-        #TODO Добавить валидацию
-        pass
+        narrowed = {}
+        for key in self.section:
+            if key in set:
+                narrowed[key] = self.section[key]
+                for node in narrowed[key]['R+']:
+                    if node not in set:
+                        narrowed[key]['R+'].remove(node)
+                for node in narrowed[key]['R-']:
+                    if node not in set:
+                        narrowed[key]['R-'].remove(node)
+        return narrowed
 
     def intersection(self, second_section):
         intersected = {}
