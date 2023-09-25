@@ -8,7 +8,12 @@ class Section():
 
 
     def complement(self):
-        pass
+        keys = self.section.keys()
+        add_R = {key:{} for key in keys}
+        for elem in keys:
+            add_R[elem]['R+'] = add_R[elem].get('R+', [])+[i for i in set(keys) - set(self.section[elem]['R+'])]
+            add_R[elem]['R-'] = add_R[elem].get('R-', [])+[i for i in set(keys) - set(self.section[elem]['R-'])]
+        return add_R
 
 
     def inverse(self):
