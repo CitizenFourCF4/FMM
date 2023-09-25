@@ -41,8 +41,15 @@ class DiGraph():
 
 
     def symmetric_difference(self, second_digraph):
-        #TODO Добавить валидацию
-        pass
+        nodes1 = set(self.digraph.nodes)
+        nodes2 = set(second_digraph.digraph.nodes)
+        nodes_set = nodes1.union(nodes2)
+        nodes = [i for i in nodes_set]
+        edges_set = set(self.digraph.edges).symmetric_difference(set(second_digraph.digraph.edges))
+        edges = [i for i in edges_set]
+        G = nx.DiGraph()
+        G.add_edges_from(edges)
+        return DiGraph(G)
     
 
     def multiple(self, second_digraph):
