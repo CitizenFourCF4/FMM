@@ -28,8 +28,18 @@ class Section():
     
 
     def union(self, second_section):
-        #TODO Добавить валидацию
-        pass
+        all_keys = list(set(list(self.section.keys())+list(second_section.keys())))
+        new_section = {i:{'R+':[],'R-':[]} for i in all_keys}
+        for el in all_keys:
+            if el in self.section.keys():
+                new_section[el]['R+']+=self.section[el]['R+']
+                new_section[el]['R-']+=self.section[el]['R-']
+            if el in second_section.keys():
+                new_section[el]['R+']+=second_section[el]['R+']
+                new_section[el]['R-']+=second_section[el]['R-']
+            new_section[el]['R+'] = list(set(new_section[el]['R+']))
+            new_section[el]['R-'] = list(set(new_section[el]['R-']))
+        return new_section
     
 
     def difference(self, second_section):
