@@ -28,6 +28,7 @@ class DiGraph():
     def intersection(self, second_digraph):
         #TODO Добавить валидацию
         new_digraph = nx.DiGraph()
+        new_digraph.add_nodes_from(self.digraph.nodes)
         new_digraph.add_edges_from(set(self.digraph.edges).intersection(set(second_digraph.edges)))
         return new_digraph
     
@@ -35,6 +36,7 @@ class DiGraph():
     def union(self, second_digraph):
         #TODO Добавить валидацию
         new_digraph = nx.DiGraph()
+        new_digraph.add_nodes_from(self.digraph.nodes)
         new_digraph.add_edges_from(set(self.digraph.edges).union(set(second_digraph.edges)))
         return new_digraph
 
@@ -42,6 +44,7 @@ class DiGraph():
     def difference(self, second_digraph):
         #TODO Добавить валидацию
         new_digraph = nx.DiGraph()
+        new_digraph.add_nodes_from(self.digraph.nodes)
         new_digraph.add_edges_from(set(self.digraph.edges).difference(set(second_digraph.edges)))
         return new_digraph
 
