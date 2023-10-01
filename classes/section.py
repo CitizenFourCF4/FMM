@@ -88,6 +88,7 @@ class Section():
         return self.section
 
     def multiple(self, second_section):
+        #TODO Добавить валидацию
         multiple = {i: {'R+': [], 'R-': []} for i in self.section.keys()}
         for key in self.section:
             res = set([])
