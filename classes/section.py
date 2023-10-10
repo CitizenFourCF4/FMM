@@ -86,8 +86,17 @@ class Section():
                 if elem_r_minus not in self.section[node]['R-']:
                     self.section[node]['R-'].append(elem_r_minus)
         return self.section
-    
 
     def multiple(self, second_section):
         #TODO Добавить валидацию
-        pass
+        multiple = {i: {'R+': [], 'R-': []} for i in self.section.keys()}
+        for key in self.section:
+            res = set([])
+            for node in second_section[key]['R+']:
+                res = res.union(set(self.section[node]['R+']))
+            multiple[key]['R+'] = list(res)
+            res = set([])
+            for node in second_section[key]['R-']:
+                res = res.union(set(self.section[node]['R-']))
+            multiple[key]['R-'] = list(res)
+        return multiple
